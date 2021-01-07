@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
 
 import { Post } from '../post.model';
@@ -15,7 +15,8 @@ export class PostListComponent implements OnInit, OnDestroy{
   //   {title: 'Second Post', content: 'This is the second post\'s content'},
   //   {title: 'Third Post', content: 'This is the third post\'s content'},
   // ];
-  @Input() posts: Post[] = [];
+  posts: Post[] = [];
+  isLoading = false;
   private postsSub: Subscription;
 
   constructor(public postsService: PostsService) {
@@ -23,9 +24,11 @@ export class PostListComponent implements OnInit, OnDestroy{
 
   // tslint:disable-next-line:typedef
   ngOnInit() {
+    this.isLoading = true;
     this.postsService.getPosts();
     this.postsSub =  this.postsService.getPostUpdateListener()
       .subscribe((posts: Post[]) => {
+        this.isLoading = false;
         this.posts = posts;
       });
   }
