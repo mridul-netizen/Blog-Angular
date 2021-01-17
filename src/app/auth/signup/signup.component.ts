@@ -12,8 +12,7 @@ export class SignupComponent {
 
   constructor(public authService: AuthService) {}
 
-  // tslint:disable-next-line:typedef
-  onSignUp(form: NgForm) {
+  onSignup(form: NgForm) {
     if (form.invalid) {
       return;
     }

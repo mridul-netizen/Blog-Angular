@@ -17,7 +17,7 @@ import { PostListComponent } from './posts/post-list/post-list.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
-import {AuthInterceptor} from './auth/auth.interceptor';
+import {AuthInterceptor} from './auth/auth-interceptor';
 
 // @ts-ignore
 @NgModule({
